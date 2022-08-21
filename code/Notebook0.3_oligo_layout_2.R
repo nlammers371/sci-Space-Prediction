@@ -13,7 +13,8 @@ suppressPackageStartupMessages({
   library(ggplot2)
 })
 
-setwd("/Volumes/GoogleDrive/My Drive/sciSpace/Submission_Data/Oligo_layout_2/")
+#setwd("sciSpace/Data/Oligo_layout_2/")
+setwd("C:/Users/nlamm/Dropbox (Cole Trapnell's Lab)/Nick/sciSpace/Data/Oligo_layout_2")
 
 # Constructing the oligo array ---------------------------------------------------
 # Layout of how the printer arrays the spatial grid

@@ -18,7 +18,7 @@ suppressPackageStartupMessages({
   library(ggrepel)
   library(monocle3)
   
-  space_directory = "/Volumes/GoogleDrive/My Drive/sciSpace/"
+  space_directory = "C:/Users/nlamm/Dropbox (Cole Trapnell's Lab)/Nick/sciSpace/"
   setwd(dir=space_directory)
 
   # Pass TRUE if you want to see progress output on some of Monocle 3's operations
@@ -523,6 +523,6 @@ rownames(all_image_data) = all_image_data$slide_id
 
 # Save result for future use
 saveRDS(object = all_image_data,
-        file = "Submission_Data/E14_slides/RDS_intermediates/Notebook0_1_images_and_transformations.RDS")
+        file = "Data/E14_slides/RDS_intermediates/Notebook0_1_images_and_transformations.RDS")
 
 

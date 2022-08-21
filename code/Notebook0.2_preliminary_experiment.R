@@ -12,10 +12,10 @@ suppressPackageStartupMessages({
   library(Matrix)
   library(monocle3)
   
-  space_directory = "/Volumes/GoogleDrive/My Drive/sciSpace/"
+  space_directory = "C:/Users/nlamm/Dropbox (Cole Trapnell's Lab)/Nick/sciSpace/"
   setwd(dir=space_directory)
   
-  source("data_from_experiments/bin/chiSq_test_functions.R")
+  source("C:/Users/nlamm/Dropbox (Cole Trapnell's Lab)/Nick/sciSpace/Data/bin/chiSq_test_functions.R")
   
   # Pass TRUE if you want to see progress output on some of Monocle 3's operations
   DelayedArray:::set_verbose_block_processing(TRUE)
@@ -77,20 +77,20 @@ load.count.matrix = function(mat.path, gene.annotation.path, cell.annotation.pat
 # Read in transcriptome for E13-E16 CDS replicate 1 -----------------------
 # Cutoff in knee plot was 500 RNA UMIs per cell
 cds_1 = 
-  load.count.matrix(mat.path = "Submission_Data/E13-E16/Experiment1/UMI.count.matrix",
-                    gene.annotation.path = "Submission_Data/E13-E16/Experiment1/gene.annotations",
-                    cell.annotation.path = "Submission_Data/E13-E16/Experiment1/cell.annotations")
+  load.count.matrix(mat.path = "Data/E13-E16/Experiment1/UMI.count.matrix",
+                    gene.annotation.path = "Data/E13-E16/Experiment1/gene.annotations",
+                    cell.annotation.path = "Data/E13-E16/Experiment1/cell.annotations")
 
 # Read in hashing data that corresponds to slide and oligo concentration used 
 hashTable_1 = 
-  read.table("Submission_Data/E13-E16/Experiment1/hashTable.out",
+  read.table("Data/E13-E16/Experiment1/hashTable.out",
              sep = "\t",
              header = F,
              col.names = c("sample", "Cell", "oligo", "axis", "count"))
 
 # Read in data for UMIs per sci-RNA-seq barcode to determine background cell distribution
 rna_umis_1 = 
-  read.table("Submission_Data/E13-E16/Experiment1/UMIs.per.cell.barcode",
+  read.table("Data/E13-E16/Experiment1/UMIs.per.cell.barcode",
              col.names = c("sample","Cell","n.umi"))
 
 hashTable_1 = 
@@ -334,20 +334,20 @@ rbind(hashTable_1_set2, hashTable_1_set1) %>%
 
 # Cutoff of was 500 RNA UMIs per cell
 cds_2 = 
-  load.count.matrix(mat.path = "Submission_Data/E13-E16/Experiment2/UMI.count.matrix",
-                    gene.annotation.path = "Submission_Data/E13-E16/Experiment2/gene.annotations",
-                    cell.annotation.path = "Submission_Data/E13-E16/Experiment2/cell.annotations")
+  load.count.matrix(mat.path = "Data/E13-E16/Experiment2/UMI.count.matrix",
+                    gene.annotation.path = "Data/E13-E16/Experiment2/gene.annotations",
+                    cell.annotation.path = "Data/E13-E16/Experiment2/cell.annotations")
 
 # Read in hashing data that corresponds to slide and oligo concentration used 
 hashTable_2 = 
-  read.table("Submission_Data/E13-E16/Experiment2/hashTable.out",
+  read.table("Data/E13-E16/Experiment2/hashTable.out",
              sep = "\t",
              header = F,
              col.names = c("sample", "Cell", "oligo", "axis", "count"))
 
 # Read in data for UMIs per sci-RNA-seq barcode to determine background cell distribution
 rna_umis_2 = 
-  read.table("Submission_Data/E13-E16/Experiment2/UMIs.per.cell.barcode",
+  read.table("Data/E13-E16/Experiment2/UMIs.per.cell.barcode",
              col.names = c("sample","Cell","n.umi"))
 
 

@@ -10,15 +10,18 @@ suppressPackageStartupMessages({
   library(devtools)
   library(monocle3)
   
-  space_directory = "/Volumes/GoogleDrive/My Drive/sciSpace/"
+  space_directory = "C:/Users/nlamm/Dropbox (Cole Trapnell's Lab)/Nick/sciSpace/"
   setwd(dir=space_directory)
   set.seed(42)
 })
 
+# Generate figure directories
+figDir = "Figures/Figure_Components/Supplement_grid_QC/"
+dir.create(file.path(space_directory, figDir), showWarnings = FALSE)
 
 # Read in hashTable and append experiment specific metadata ---------------
 
-hashTable = read.table("Submission_Data/control_experiment/Sequencing/hashTable.out", sep = "\t", header = F)
+hashTable = read.table("Data/control_experiment/Sequencing/hashTable.out", sep = "\t", header = F)
 colnames(hashTable) = c("sample", "cell", "oligo", "axis", "count")
 
 cell_meta_data = 
@@ -67,7 +70,7 @@ hashTable =
 
 # Join hash information with oligo layout ---------------------------------
 oligo_plate_layout = 
-  read.table(file = "Submission_Data/Oligo_layout/oligo_plate_layout.tsv", 
+  read.table(file = "Data/Oligo_layout/oligo_plate_layout.tsv", 
              sep = '\t', 
              header = TRUE)
 

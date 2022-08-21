@@ -9,10 +9,10 @@ suppressPackageStartupMessages({
   library(Matrix)
   library(monocle3)
   
-  space_directory = "/Volumes/GoogleDrive/My Drive/sciSpace/"
+  space_directory = "C:/Users/nlamm/Dropbox (Cole Trapnell's Lab)/Nick/sciSpace/"
   setwd(dir=space_directory)
   
-  source("data_from_experiments/bin/chiSq_test_functions.R")
+  source("C:/Users/nlamm/projects/sci-Space-Prediction/bin/chiSq_test_functions.R")
   DelayedArray:::set_verbose_block_processing(TRUE)
   options(DelayedArray.block.size=1000e7)
 })
@@ -79,47 +79,47 @@ load.count.matrix = function(mat.path, gene.annotation.path, cell.annotation.pat
 
 # # Slides 1-6 Cutoff of 500 UMIs per cell
 spatial_cds_1 = 
-  load.count.matrix(mat.path = "Submission_Data/E14_slides/Sequencing/experiment_1/UMI.count.matrix",
-                    gene.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_1/gene.annotations",
-                    cell.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_1/cell.annotations")
+  load.count.matrix(mat.path = "Data/E14_slides/Sequencing/experiment_1/UMI.count.matrix",
+                    gene.annotation.path = "Data/E14_slides/Sequencing/experiment_1/gene.annotations",
+                    cell.annotation.path = "Data/E14_slides/Sequencing/experiment_1/cell.annotations")
 # Slides 8-14 (1) Cutoff of 400 UMIs per cell
 spatial_cds_2 = 
-  load.count.matrix(mat.path = "Submission_Data/E14_slides/Sequencing/experiment_2/A_plates/UMI.count.matrix",
-                    gene.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_2/A_plates/gene.annotations",
-                    cell.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_2/A_plates/cell.annotations")
+  load.count.matrix(mat.path = "Data/E14_slides/Sequencing/experiment_2/A_plates/UMI.count.matrix",
+                    gene.annotation.path = "Data/E14_slides/Sequencing/experiment_2/A_plates/gene.annotations",
+                    cell.annotation.path = "Data/E14_slides/Sequencing/experiment_2/A_plates/cell.annotations")
 # Slides 8-14 (2) Cutoff of 400 UMIs per cell
 spatial_cds_3 = 
-  load.count.matrix(mat.path = "Submission_Data/E14_slides/Sequencing/experiment_2/D_plates/UMI.count.matrix",
-                    gene.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_2/D_plates/gene.annotations",
-                    cell.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_2/D_plates/cell.annotations")
+  load.count.matrix(mat.path = "Data/E14_slides/Sequencing/experiment_2/D_plates/UMI.count.matrix",
+                    gene.annotation.path = "Data/E14_slides/Sequencing/experiment_2/D_plates/gene.annotations",
+                    cell.annotation.path = "Data/E14_slides/Sequencing/experiment_2/D_plates/cell.annotations")
 # Slides 8-14 (3) Cutoff of 400 UMIs per cell
 spatial_cds_4 = 
-  load.count.matrix(mat.path = "Submission_Data/E14_slides/Sequencing/experiment_2/E_plates/UMI.count.matrix",
-                    gene.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_2/E_plates/gene.annotations",
-                    cell.annotation.path = "Submission_Data/E14_slides/Sequencing/experiment_2/E_plates/cell.annotations")
+  load.count.matrix(mat.path = "Data/E14_slides/Sequencing/experiment_2/E_plates/UMI.count.matrix",
+                    gene.annotation.path = "Data/E14_slides/Sequencing/experiment_2/E_plates/gene.annotations",
+                    cell.annotation.path = "Data/E14_slides/Sequencing/experiment_2/E_plates/cell.annotations")
 
 
 # Read in hashing data that corresponds to spatial coordinates
 hashTable_1 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_1/hashTable.out",
+  read.table("Data/E14_slides/Sequencing/experiment_1/hashTable.out",
             sep = "\t",
             header = F,
             col.names = c("sample", "Cell", "oligo", "axis", "count"))
 
 hashTable_2 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_2/A_plates/hashTable.out",
+  read.table("Data/E14_slides/Sequencing/experiment_2/A_plates/hashTable.out",
              sep = "\t",
              header = F,
              col.names = c("sample", "Cell", "oligo", "axis", "count"))
 
 hashTable_3 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_2/D_plates/hashTable.out",
+  read.table("Data/E14_slides/Sequencing/experiment_2/D_plates/hashTable.out",
              sep = "\t",
              header = F,
              col.names = c("sample", "Cell", "oligo", "axis", "count"))
 
 hashTable_4 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_2/E_plates/hashTable.out",
+  read.table("Data/E14_slides/Sequencing/experiment_2/E_plates/hashTable.out",
              sep = "\t",
              header = F,
              col.names = c("sample", "Cell", "oligo", "axis", "count"))
@@ -128,22 +128,22 @@ hashTable_4 =
 
 # Read in the number of RNA UMI molecules per cell 
 rna_umis_1 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_1/UMIs.per.cell.barcode",
+  read.table("Data/E14_slides/Sequencing/experiment_1/UMIs.per.cell.barcode",
              col.names = c("sample","Cell","n.umi")) %>%
   dplyr::select(-"sample")
 
 rna_umis_2 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_2/A_plates/UMIs.per.cell.barcode",
+  read.table("Data/E14_slides/Sequencing/experiment_2/A_plates/UMIs.per.cell.barcode",
              col.names = c("sample","Cell","n.umi")) %>%
   dplyr::select(-"sample")
 
 rna_umis_3 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_2/D_plates/UMIs.per.cell.barcode",
+  read.table("Data/E14_slides/Sequencing/experiment_2/D_plates/UMIs.per.cell.barcode",
              col.names = c("sample","Cell","n.umi")) %>%
   dplyr::select(-"sample")
 
 rna_umis_4 = 
-  read.table("Submission_Data/E14_slides/Sequencing/experiment_2/E_plates/UMIs.per.cell.barcode",
+  read.table("Data/E14_slides/Sequencing/experiment_2/E_plates/UMIs.per.cell.barcode",
              col.names = c("sample","Cell","n.umi")) %>%
   dplyr::select(-"sample")
 
@@ -208,7 +208,7 @@ do.call(rbind,
         axis.title = element_text(size = 8))+ 
   xlab("Number of Cells") +
   ylab("RNA UMIs") +
-  ggsave(filename = "Submission_Data/E14_slides/Auxillary_Figures/Notebook0_RNA_kneeplot.pdf",
+  ggsave(filename = "Data/E14_slides/Auxillary_Figures/Notebook0_RNA_kneeplot.pdf",
          height = 2,
          width = 4) 
 
@@ -519,14 +519,14 @@ spatial_cds =
 
 # Write out CDS that contains the new slide information -------------------
 saveRDS(object =spatial_cds,
-        file = "Submission_Data/E14_slides/RDS_intermediates/Notebook0_E14_spatial_CDS.RDS")
+        file = "Data/E14_slides/RDS_intermediates/Notebook0_E14_spatial_CDS.RDS")
 
 # Write out mtx file that contains the new slide information
 writeMM(obj = counts(spatial_cds),
-        file = "Submission_Data/E14_slides/RDS_intermediates/Notebook0_E14_count_matrix.mtx")
+        file = "Data/E14_slides/RDS_intermediates/Notebook0_E14_count_matrix.mtx")
 
 # Write out an RDS of the hashTable
 saveRDS(object = hashTable.list,
-        file = "Submission_Data/E14_slides/RDS_intermediates/Notebook0_hash_table.RDS")
+        file = "Data/E14_slides/RDS_intermediates/Notebook0_hash_table.RDS")
 
 
